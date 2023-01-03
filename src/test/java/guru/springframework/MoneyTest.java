@@ -3,6 +3,7 @@ package guru.springframework;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class MoneyTest {
 
@@ -15,5 +16,10 @@ public class MoneyTest {
         product = five.times(3);
         assertEquals(15, product.amount);
 
+    }
+
+    @Test
+    void testEquals() {
+        assertEquals(new Dollar(5), new Dollar(5));
     }
 }
