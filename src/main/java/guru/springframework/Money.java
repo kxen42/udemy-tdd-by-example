@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public abstract class Money {
     protected int amount;
+    protected abstract String currency();
 
     // factory methods
     public static Dollar dollar(int amount) {
