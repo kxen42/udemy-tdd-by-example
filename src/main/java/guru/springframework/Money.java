@@ -2,9 +2,19 @@ package guru.springframework;
 
 import java.util.Objects;
 
-public class Money {
+public abstract class Money {
     protected int amount;
 
+    // factory methods
+    public static Dollar dollar(int amount) {
+        return new Dollar(amount);
+    }
+
+    public static Franc franc(int amount) {
+        return new Franc(amount);
+    }
+
+    abstract public Money times(int multiplier);
 
     @Override
     public boolean equals(Object o) {
