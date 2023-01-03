@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class MoneyTest {
 
     @Test
-    void testMultiplicationMoney() {
+    void testMultiplicationDollar() {
         Money five = Money.dollar(5);
         Money product = five.times(2);
         assertEquals(Money.dollar(10), product);
