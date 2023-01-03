@@ -2,7 +2,7 @@ package guru.springframework;
 
 import java.util.Objects;
 
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
 
@@ -21,7 +21,9 @@ public abstract class Money {
         return new Franc(amount, "CHF");
     }
 
-    abstract public Money times(int multiplier);
+    public Money times(int multiplier){
+        return new Money(amount * multiplier, currency);
+    }
 
 
     public String currency() {
@@ -30,14 +32,23 @@ public abstract class Money {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Money money = (Money) o;
-        return amount == money.amount;
+        Money other = (Money) o;
+        if (this == other) return true;
+        if (other == null) return false;
+        return amount == other.amount &&
+            Objects.equals(currency, other.currency());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount);
+        return Objects.hash(amount, currency);
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+            "amount=" + amount +
+            ", currency='" + currency + '\'' +
+            '}';
     }
 }
